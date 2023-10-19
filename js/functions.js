@@ -1,5 +1,5 @@
-const IsStringCorrectLength = (string, maxLength) => string.length <= maxLength;
-const IsStringPalindrome = (string) =>
+const isStringCorrectLength = (string, maxLength) => string.length <= maxLength;
+const isStringPalindrome = (string) =>
 {
   let normalized = string.replaceAll(' ', '').toLowerCase();
   let normalizedLength = normalized.length;

@@ -3,8 +3,6 @@ const MIN_COMMENTS_COUNT = 0;
 const MAX_COMMENTS_COUNT = 30;
 const MIN_LIKES_COUNT = 15;
 const MAX_LIKES_COUNT = 200;
-let lastCommentId = 0;
-
 const MESSAGE_BASE = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
@@ -13,7 +11,6 @@ const MESSAGE_BASE = [
   'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
 ];
-
 const NAMES = [
   'Артем',
   'Борис',
@@ -24,6 +21,7 @@ const NAMES = [
   'Жанна',
   'Зинаида Васильевна Шмель'
 ];
+let lastCommentId = 0;
 
 const getRandomInt = (min, max) => {
   min = Math.ceil(min);
@@ -64,4 +62,4 @@ const createObjects = () => {
   return objects;
 };
 
-console.log(createObjects());
+createObjects();

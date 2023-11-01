@@ -1,11 +1,11 @@
 const OBJECT_COUNT = 25;
-const MIN_COMMENTS_COUNT = 30;
+const MIN_COMMENTS_COUNT = 0;
 const MAX_COMMENTS_COUNT = 30;
 const MIN_LIKES_COUNT = 15;
 const MAX_LIKES_COUNT = 200;
 let lastCommentId = 0;
 
-const messageBase = [
+const MESSAGE_BASE = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
   'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
@@ -14,7 +14,7 @@ const messageBase = [
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
 ];
 
-const names = [
+const NAMES = [
   'Артем',
   'Борис',
   'Виктория',
@@ -31,14 +31,12 @@ const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
-const createComment = (commentId) => {
-  return {
-    id: commentId,
-    avatar: 'img/avatar-' + getRandomInt(1, 6) + '.svg',
-    message: messageBase[getRandomInt(0, messageBase.length)],
-    name: names[getRandomInt(0, names.length)],
-  };
-};
+const createComment = (commentId) => ({
+  id: commentId,
+  avatar: `img/avatar-${getRandomInt(1, 6)}.svg`,
+  message: MESSAGE_BASE[getRandomInt(0, MESSAGE_BASE.length)],
+  name: NAMES[getRandomInt(0, NAMES.length)],
+});
 
 const createComments = () => {
   const comments = [];
@@ -50,15 +48,13 @@ const createComments = () => {
   return comments;
 };
 
-const createObject = (id) => {
-  return {
-    id: id,
-    url: 'photos/' + id + '.jpg',
-    description: 'Это фотография, не иначе!',
-    likes: getRandomInt(MIN_LIKES_COUNT, MAX_LIKES_COUNT),
-    comments: createComments(),
-  };
-};
+const createObject = (id) => ({
+  id: id,
+  url: `photos/${id}.jpg`,
+  description: 'Это фотография, не иначе!',
+  likes: getRandomInt(MIN_LIKES_COUNT, MAX_LIKES_COUNT),
+  comments: createComments(),
+});
 
 const createObjects = () => {
   const objects = [];

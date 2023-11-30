@@ -1,4 +1,4 @@
-import {getRandomInt} from './js/util.js';
+import { getRandomInt } from './util.js';
 
 const OBJECT_COUNT = 25;
 const MIN_COMMENTS_COUNT = 0;
@@ -58,4 +58,4 @@ const createObjects = () => {
   return objects;
 };
 
-export {createObjects};
+export { createObjects };

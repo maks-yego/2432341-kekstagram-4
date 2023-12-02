@@ -1,3 +1,5 @@
+// Задание 8.14. Не укладываюсь в дедлайн, отправляю одной домашкой, надеюсь, так можно.
+
 const commentTemplate = document.querySelector('.social__comment');
 const bigPicture = document.querySelector('.big-picture');
 

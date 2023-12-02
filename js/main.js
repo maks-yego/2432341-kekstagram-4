@@ -1,3 +1,5 @@
-import {createObjects} from './js/data.js';
+import { createObjects } from './data.js';
+import { renderMiniatures } from './render.js';
 
-createObjects();
+const pictures = createObjects();
+renderMiniatures(pictures);

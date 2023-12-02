@@ -3,7 +3,7 @@ const container = document.querySelector('.pictures');
 
 const createMiniature = (picture) => {
   const miniature = miniatureTemplate.cloneNode(true);
-  miniature.querySelector('.picture__img').scr = picture.url;
+  miniature.querySelector('.picture__img').src = picture.url;
   miniature.querySelector('.picture__img').alt = picture.description;
   miniature.querySelector('.picture__likes').textContent = picture.likes;
   miniature.querySelector('.picture__comments').textContent = picture.comments.length;

@@ -1,3 +1,5 @@
+import { openPicture } from './popup.js';
+
 const miniatureTemplate = document.querySelector('#picture').content;
 const container = document.querySelector('.pictures');
 
@@ -13,7 +15,11 @@ const createMiniature = (picture) => {
 const renderMiniatures = (pictures) => {
   const fragment = document.createDocumentFragment();
   pictures.forEach((picture) => {
-    fragment.append(createMiniature(picture));
+    const miniature = createMiniature(picture);
+    miniature.querySelector('.picture__img').addEventListener('click', () => {
+      openPicture(picture);
+    });
+    fragment.append(miniature);
   });
   container.append(fragment);
 };

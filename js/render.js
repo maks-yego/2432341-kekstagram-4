@@ -1,5 +1,3 @@
-// Задание 7.15.
-
 import { openPicture } from './popup.js';
 
 const miniatureTemplate = document.querySelector('#picture').content;

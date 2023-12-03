@@ -14,11 +14,6 @@ const openPicture = (picture) => {
   bigPicture.querySelector('.comments-count').textContent = picture.comments.length;
   bigPicture.querySelector('.social__caption').textContent = picture.description;
 
-  bigPicture.querySelector('.shown-comments-count').textContent = 5;
-  if (picture.comments.length < 5) {
-    bigPicture.querySelector('.shown-comments-count').textContent = picture.comments.length;
-  }
-
   const container = document.querySelector('.social__comments');
   const fragment = document.createDocumentFragment();
 

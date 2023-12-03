@@ -1,5 +1,6 @@
 const commentTemplate = document.querySelector('.social__comment');
 const bigPicture = document.querySelector('.big-picture');
+const commentsLoader = document.querySelector('.comments-loader');
 
 const closePicture = () => {
   document.body.classList.remove('modal-open');
@@ -14,6 +15,11 @@ const openPicture = (picture) => {
   bigPicture.querySelector('.comments-count').textContent = picture.comments.length;
   bigPicture.querySelector('.social__caption').textContent = picture.description;
 
+  const shownCommentsCount = () => Number(bigPicture.querySelector('.shown-comments-count').textContent);
+  const commentsCount = () => Number(bigPicture.querySelector('.comments-count').textContent);
+
+  const commentsCountStep = 5;
+
   const container = document.querySelector('.social__comments');
   const fragment = document.createDocumentFragment();
 
@@ -27,15 +33,33 @@ const openPicture = (picture) => {
   container.replaceChildren();
   container.append(fragment);
 
-  document.querySelector('.social__comment-count').classList.add('hidden');
-  document.querySelector('.comments-loader').classList.add('hidden');
+  bigPicture.querySelector('.shown-comments-count').textContent = Math.min(commentsCountStep, commentsCount());
+  if (shownCommentsCount() === commentsCount()) {
+    commentsLoader.classList.add('hidden');
+  }
+  const comments = bigPicture.querySelectorAll('.social__comment');
+  for (let i = 0; i < shownCommentsCount(); i++) {
+    comments[i].classList.remove('hidden');
+  }
+
   document.body.classList.add('modal-open');
   bigPicture.querySelector('.big-picture__cancel').addEventListener('click', () => {
     closePicture();
   });
+
   document.addEventListener('keydown', (evt) => {
     if (evt.key === 'Escape') {
       closePicture();
+    }
+  });
+
+  commentsLoader.addEventListener('click', () => {
+    bigPicture.querySelector('.shown-comments-count').textContent = Math.min(shownCommentsCount() + commentsCountStep, commentsCount());
+    if (shownCommentsCount() === commentsCount()) {
+      commentsLoader.classList.add('hidden');
+    }
+    for (let i = 0; i < shownCommentsCount(); i++) {
+      comments[i].classList.remove('hidden');
     }
   });
 };

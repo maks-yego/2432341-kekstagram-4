@@ -22,6 +22,9 @@ const renderMiniatures = (pictures) => {
     fragment.append(miniature);
   });
   container.append(fragment);
+  document.querySelectorAll('.social__comment').forEach((comment) => {
+    comment.classList.add('hidden');
+  });
 };
 
 export { renderMiniatures };

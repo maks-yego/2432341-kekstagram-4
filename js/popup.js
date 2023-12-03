@@ -1,11 +1,10 @@
-// Задание 8.14. Не укладываюсь в дедлайн, отправляю одной домашкой, надеюсь, так можно.
-
 const commentTemplate = document.querySelector('.social__comment');
 const bigPicture = document.querySelector('.big-picture');
 
 const closePicture = () => {
   document.body.classList.remove('modal-open');
   document.querySelector('.big-picture').classList.add('hidden');
+  bigPicture.querySelector('.social__comments-loader').classList.remove('hidden');
 };
 
 const openPicture = (picture) => {
@@ -17,6 +16,7 @@ const openPicture = (picture) => {
 
   const container = document.querySelector('.social__comments');
   const fragment = document.createDocumentFragment();
+
   picture.comments.forEach((comment) => {
     const newComment = commentTemplate.cloneNode(true);
     newComment.querySelector('.social__picture').src = comment.avatar;

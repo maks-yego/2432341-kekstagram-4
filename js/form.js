@@ -92,4 +92,5 @@ pristine.addValidator(textDescription, validateDescriptionLength, `Не боле
 uploadInput.addEventListener('change', openForm);
 uploadCancel.addEventListener('click', closeForm);
 document.addEventListener('keydown', formEscFunction);
+
 uploadForm.onsubmit = uploadSubmitFunction;

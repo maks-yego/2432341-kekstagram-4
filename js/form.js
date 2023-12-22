@@ -1,7 +1,6 @@
 const MAX_HASHTAGS_COUNT = 5;
 const MAX_DESCRIPTION_LENGTH = 140;
 const HASHTAG_REGEXP = /^#[a-zа-яё0-9]{1,19}$/i;
-
 const body = document.body;
 const uploadForm = document.querySelector('.img-upload__form');
 const uploadInput = document.querySelector('.img-upload__input');

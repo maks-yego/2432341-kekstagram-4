@@ -1,3 +1,5 @@
+import { setPictureScale, picture } from './editing-picture.js';
+
 const MAX_HASHTAGS_COUNT = 5;
 const MAX_DESCRIPTION_LENGTH = 140;
 const HASHTAG_REGEXP = /^#[a-zа-яё0-9]{1,19}$/i;
@@ -10,6 +12,7 @@ const textHashtags = document.querySelector('.text__hashtags');
 const textDescription = document.querySelector('.text__description');
 const uploadSubmit = document.querySelector('.img-upload__submit');
 const successMessageTemplate = document.querySelector('#success').content;
+const effectLevel = document.querySelector('.img-upload__effect-level');
 
 const pristine = new Pristine(uploadForm, {
   classTo: 'img-upload__field-wrapper',
@@ -33,6 +36,9 @@ const closeForm = () => {
   body.classList.remove('modal-open');
   uploadOverlay.classList.add('hidden');
   textHashtags.removeEventListener('change', textHashtagsFunction);
+  setPictureScale(100);
+  picture.style.filter = 'none';
+  effectLevel.classList.add('hidden');
 };
 
 const formEscFunction = (evt) => {
@@ -85,4 +91,5 @@ pristine.addValidator(textDescription, validateDescriptionLength, `Не боле
 uploadInput.addEventListener('change', openForm);
 uploadCancel.addEventListener('click', closeForm);
 document.addEventListener('keydown', formEscFunction);
+
 uploadForm.onsubmit = uploadSubmitFunction;
